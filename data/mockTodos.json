@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "title": "Meeting with manager at park",
+    "description": "This meeting shouldn't be missed at any cost, It's really an important meeting with this manager.",
+    "date": "25 Sept. 2024",
+    "time": "05:20 PM",
+    "category": "Tasks"
+  },
+  {
+    "id": "2",
+    "title": "Weekly Grocery List",
+    "description": "Buy organic milk, eggs, bread, and some fresh avocados for the weekend brunch.",
+    "date": "26 Sept. 2024",
+    "time": "10:00 AM",
+    "category": "Lists"
+  },
+  {
+    "id": "3",
+    "title": "Project Brainstorming",
+    "description": "Draft the initial wireframes for the new mobile app and send the Figma link to the design team.",
+    "date": "27 Sept. 2024",
+    "time": "02:30 PM",
+    "category": "Notes"
+  },
+  {
+    "id": "4",
+    "title": "Gym Session",
+    "description": "Leg day focus. Don't forget to pack the protein shake and the jumping rope.",
+    "date": "28 Sept. 2024",
+    "time": "06:00 PM",
+    "category": "Tasks"
+  }
+]
