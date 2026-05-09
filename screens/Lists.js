@@ -1,6 +1,6 @@
 import BottomNav from "components/BottomNav";
-import Categories from "components/Categories";
 import TopNav from "components/TopNav";
+import WeekCalendar from "components/WeekCalender";
 import { View, Text, StatusBar, Image } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -23,12 +23,28 @@ export default function Lists() {
                          >
                            <TopNav />
                          </View>
-                         <Text style={{ fontSize: 50,paddingTop: insets.top + 140 ,paddingHorizontal: 24 }} className="self-center  text-black font-semibold">
+                         <Text style={{ fontSize: 50,paddingTop: insets.top + 140 ,paddingHorizontal: 24 }} className="self-start  text-black font-semibold">
                            To-Do Lists
                          </Text>
-                          <View className="-mx-6"> 
-                                 <Categories />
-                               </View>
+                         <Text>
+                         <View style={{ paddingHorizontal: 30, paddingTop: 8 }} className="flex gap-5">
+                          <Text style={{ fontSize: 16 ,color: '#555' }}>
+  {new Date().toLocaleString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })}
+</Text>
+<View>
+<Text style={{ fontSize: 35,marginLeft:-4, color: '#000' }}>
+  Today
+</Text>
+</View>
+</View>
+ </Text>
+<View className=" mt-4 self-center">
+  <WeekCalendar/>
+</View>
               <View 
                 style={{ bottom: insets.bottom + 40 }} 
                 className="absolute w-full z-[100] items-center"
