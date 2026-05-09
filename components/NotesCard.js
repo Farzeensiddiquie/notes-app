@@ -1,9 +1,10 @@
-// NotesCard.jsx
 import { Text, View } from "react-native";
-
-export default function NotesCard({ title, desc, date,color }) {
+export default function NotesCard({ title, desc, date, color }) {
   return (
-    <View className={`w-[180px] -rotate-[12deg] h-[230px] ${color} rounded-xl p-5 overflow-hidden`}>
+    <View 
+      className="w-[180px] -rotate-[12deg] h-[230px] rounded-xl p-5 overflow-hidden"
+      style={{ backgroundColor: color || "#93c5fd" }}
+    >
       
       <Text
         className="text-lg font-bold"

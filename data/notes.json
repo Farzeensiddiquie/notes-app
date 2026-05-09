@@ -3,40 +3,58 @@
       "title": "Meeting Notes - Team Sync Oct 15, 2023",
       "desc": "Notes from the weekly team meeting.",
       "date": "Oct 15, 2023",
-      "color": "bg-blue-300"
+      "color": "#93c5fd",
+      "onHold":false,
+      "compeleted":false,
+      "InProgress": false
     },
     {
       "id": 2,
       "title": "Project Planning",
       "desc": "Discuss app structure, API integration and deadlines.",
       "date": "Nov 2, 2023",
-      "color": "bg-purple-300"
+      "color": "#d8b4fe",
+      "onHold":false,
+      "compeleted":false,
+      "InProgress": false
     },
     {
       "id": 3,
       "title": "UI Improvements",
       "desc": "Need smoother animations and responsive layout fixes.",
       "date": "Dec 8, 2023",
-      "color": "bg-pink-300"
+      "color": "#f9a8d4",
+      "onHold":false,
+      "compeleted":false,
+      "InProgress": false
     },
     {
       "id": 4,
       "title": "Client Feedback",
       "desc": "Update dashboard layout and add loading states.",
       "date": "Jan 4, 2024",
-      "color": "bg-green-300"
+      "color": "#86efac",
+      "onHold":false,
+      "compeleted":false,
+      "InProgress": false
     },
      {
       "id": 5,
       "title": "Client Feedback",
       "desc": "Update dashboard layout and add loading states.",
       "date": "Jan 4, 2024",
-      "color": "bg-yellow-300"
+      "color": "#fcd34d",
+      "onHold":false,
+      "compeleted":false,
+      "InProgress": false
     },
      {
       "id": 6,
       "title": "Client Feedback",
       "desc": "Update dashboard layout and add loading states.",
       "date": "Jan 4, 2024",
-      "color": "bg-orange-300"
+      "color": "#fdba74",
+      "onHold":false,
+      "compeleted":false,
+      "InProgress": false
     }]

@@ -5,7 +5,10 @@
     "description": "This meeting shouldn't be missed at any cost, It's really an important meeting with this manager.",
     "date": "25 Sept. 2024",
     "time": "05:20 PM",
-    "category": "Tasks"
+    "category": "Tasks",
+    "onHold": false,
+    "completed": false,
+    "InProgress": false
   },
   {
     "id": "2",
@@ -13,7 +16,10 @@
     "description": "Buy organic milk, eggs, bread, and some fresh avocados for the weekend brunch.",
     "date": "26 Sept. 2024",
     "time": "10:00 AM",
-    "category": "Lists"
+    "category": "Lists",
+    "onHold": false,
+    "completed": false,
+  "InProgress": false
   },
   {
     "id": "3",
@@ -21,7 +27,10 @@
     "description": "Draft the initial wireframes for the new mobile app and send the Figma link to the design team.",
     "date": "27 Sept. 2024",
     "time": "02:30 PM",
-    "category": "Notes"
+    "category": "Notes",
+    "onHold": false,
+    "completed": false,
+    "InProgress": false
   },
   {
     "id": "4",
@@ -29,6 +38,9 @@
     "description": "Leg day focus. Don't forget to pack the protein shake and the jumping rope.",
     "date": "28 Sept. 2024",
     "time": "06:00 PM",
-    "category": "Tasks"
+    "category": "Tasks",
+    "onHold": false,
+    "completed": false,
+    "InProgress": false
   }
 ]

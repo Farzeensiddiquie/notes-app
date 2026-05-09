@@ -13,7 +13,7 @@ export default function Home() {
   const Header = () => (
     <View style={{ paddingTop: insets.top + 140 ,padding:10 }} className="self-center  pb-6">
      <View>
-      <Text style={{fontSize:50, fontWeight: 'light' }} >
+      <Text style={{fontSize:50, fontWeight: 'light', textAlign: 'center' }} >
        Manage Your Daily Tasks
       </Text>
       </View>
