@@ -1,9 +1,10 @@
 import { View, Text, FlatList } from "react-native";
 import lists from "../data/list.json";
+import WeekCalendar from "./WeekCalender";
 
 function ListCard({ item, isLast }) {
   return (
-    <View className="flex-row">
+    <View className="flex-row px-5">
       {/* Timeline */}
       <View className="items-center mr-4">
         {/* Circle */}
@@ -67,20 +68,45 @@ function ListCard({ item, isLast }) {
   );
 }
 
-export default function Lists() {
-  return (
-    <View className="flex-1  px-5 pt-10">
-      {/* Header */}
+export default function ListsComponent({ insets }) {
+  const HeaderComponent = () => (
+    <View style={{ paddingTop: 120 }}>
+      <Text style={{ fontSize: 50, paddingHorizontal: 24, paddingBottom: 16 }} className="self-start text-black font-semibold">
+        To-Do Lists
+      </Text>
+      <View style={{ paddingHorizontal: 30, paddingTop: 8 }} className="flex gap-5 mb-4">
+        <Text style={{ fontSize: 16, color: '#555' }}>
+          {new Date().toLocaleString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+          })}
+        </Text>
+        <View>
+          <Text style={{ fontSize: 35, marginLeft: -4, color: '#000' }}>
+            Today
+          </Text>
+        </View>
+      </View>
+      <View className="mt-4 self-center mb-4">
+        <WeekCalendar />
+      </View>
       <Text className="text-[#7A6666] text-[15px] mb-6 ml-10">
         In process
       </Text>
+    </View>
+  );
 
+  return (
+    <View className="flex-1 w-full">
       <FlatList
         data={lists}
         keyExtractor={(item) => item.id.toString()}
         showsVerticalScrollIndicator={false}
+        scrollEnabled={true}
+        ListHeaderComponent={HeaderComponent}
         contentContainerStyle={{
-          paddingBottom: 40,
+          paddingBottom: 100,
         }}
         renderItem={({ item, index }) => (
           <ListCard
