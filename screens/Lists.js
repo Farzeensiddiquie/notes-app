@@ -3,7 +3,7 @@ import TopNav from "components/TopNav";
 import WeekCalendar from "components/WeekCalender";
 import { View, Text, StatusBar, Image } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-
+import ListCard from "components/ListCard";
 export default function Lists() {
   const insets = useSafeAreaInsets();
   return (
@@ -45,6 +45,8 @@ export default function Lists() {
 <View className=" mt-4 self-center">
   <WeekCalendar/>
 </View>
+<View className="flex-1"><Lists/></View>
+  
               <View 
                 style={{ bottom: insets.bottom + 40 }} 
                 className="absolute w-full z-[100] items-center"

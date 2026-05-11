@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "time": "",
+    "title": "Go for groceries",
+    "desc": [
+      "Cauliflower",
+      "Potato",
+      "Lady finger"
+    ],
+    "active": true
+  },
+  {
+    "id": 2,
+    "time": "05:00 PM",
+    "title": "Car ride with kids",
+    "desc": "Promised kids to take them out for a ride in car",
+    "active": false
+  },
+  {
+    "id": 3,
+    "time": "08:15 PM",
+    "title": "Haircut appointment",
+    "desc": "Appointment at Lary hair saloon",
+    "active": false
+  }
+]
