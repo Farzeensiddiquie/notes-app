@@ -21,7 +21,7 @@ export default function Progress() {
                        >
                          <TopNav />
                        </View>
-                       <Text style={{ fontSize: 50,paddingTop: insets.top + 140 ,paddingHorizontal: 24 }} className="self-center  text-black font-semibold">
+                       <Text style={{ fontSize: 40,paddingTop: insets.top + 140 ,paddingHorizontal: 24 }} className="self-center  text-black font-semibold">
                         Your Progress
                        </Text>
                         

@@ -19,14 +19,14 @@ export default function Lists() {
 
       {/* Top Nav Fixed */}
       <View 
-        style={{ top: insets.top + 50 ,zIndex:999 }} 
+        style={{ top: insets.top + 50 , zIndex: 999 }} 
         className="absolute w-full z-[999] items-center px-6"
       >
         <TopNav />
       </View>
 
       {/* Scrollable Content */}
-      <View className="flex-1 z-0">
+      <View className="flex-1  z-0">
         <ListsComponent insets={insets} />
       </View>
 

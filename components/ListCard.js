@@ -70,7 +70,7 @@ function ListCard({ item, isLast }) {
 
 export default function ListsComponent({ insets }) {
   const HeaderComponent = () => (
-    <View style={{ top: insets.top + 140 }}>
+    <View style={{ paddingTop: insets.top + 150 }} className="px-6">
       <Text style={{ fontSize: 50, paddingHorizontal: 24, paddingBottom: 16 }} className="self-start text-black font-semibold">
         To-Do Lists
       </Text>
