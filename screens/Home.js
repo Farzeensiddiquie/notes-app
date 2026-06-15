@@ -11,13 +11,13 @@ export default function Home() {
   const insets = useSafeAreaInsets();
 
   const Header = () => (
-    <View style={{ paddingTop: insets.top + 140 ,padding:10 }} className="self-center  pb-6">
-     <View>
-      <Text style={{fontSize:50, fontWeight: 'light', textAlign: 'center' }} >
-       Manage Your Daily Tasks
-      </Text>
+    <View style={{ paddingTop: insets.top + 140, padding: 10 }} className="self-center pb-6">
+      <View>
+        <Text style={{ fontSize: 50, fontWeight: 'light', textAlign: 'center' }}>
+          Manage Your Daily Tasks
+        </Text>
       </View>
-      <View className="-mx-6"> 
+      <View className="-mx-6">
         <Categories />
       </View>
     </View>
@@ -26,11 +26,11 @@ export default function Home() {
   return (
     <View className="flex-1 bg-white">
       <StatusBar barStyle="dark-content" />
-      
-      <Image 
-        source={require('../assets/gradient-bg.png')} 
-        className="absolute w-full h-full" 
-        resizeMode="cover" 
+
+      <Image
+        source={require('../assets/gradient-bg.png')}
+        className="absolute w-full h-full"
+        resizeMode="cover"
       />
 
       <FlatList
@@ -38,30 +38,30 @@ export default function Home() {
         keyExtractor={(item) => item.id.toString()}
         ListHeaderComponent={Header}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ 
-          paddingBottom: insets.bottom + 100, 
+        contentContainerStyle={{
+          paddingBottom: insets.bottom + 100,
+          alignItems: 'center', // FIX: centers cards without needing self-center on each card
         }}
+        // FIX: removed px-6 wrapper and mb-4 — TodoCard handles its own width and spacing
         renderItem={({ item }) => (
-          <View className="px-6  mb-4">
-            <TodoCard {...item} onOpen={() => {}} />
-          </View>
+          <TodoCard {...item} onOpen={() => {}} />
         )}
       />
 
-      <View 
-        style={{ top: insets.top + 50 }} 
+      <View
+        style={{ top: insets.top + 50 }}
         className="absolute w-full z-[100] items-center px-6"
       >
         <TopNav />
       </View>
 
-      <View 
-        style={{ bottom: insets.bottom + 40 }} 
+      <View
+        style={{ bottom: insets.bottom + 40 }}
         className="absolute w-full z-[100] items-center"
       >
         <BottomNav />
       </View>
-      
+
     </View>
   );
 }

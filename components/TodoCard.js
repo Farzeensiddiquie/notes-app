@@ -1,84 +1,201 @@
-import React, { useState } from 'react';
-import { View, Text, Pressable, TouchableOpacity } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Feather } from '@expo/vector-icons';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  Pressable,
+  TouchableOpacity,
+  useWindowDimensions,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Feather } from "@expo/vector-icons";
 
-export default function TodoCard({ title, description, date, time, onOpen }) {
+export default function TodoCard({
+  title,
+  description,
+  date,
+  time,
+  onOpen,
+}) {
   const [checked, setChecked] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [isClamped, setIsClamped] = useState(false);
+
+  const { width } = useWindowDimensions();
+  const isTablet = width >= 600;
+
+  const cardWidth = isTablet ? (width - 60) / 2 : width - 32;
+
+  const px = isTablet ? 24 : 20;
+  const pt = isTablet ? 24 : 20;
+  const pb = isTablet ? 28 : 24;
+  const titleSize = isTablet ? 21 : 19;
+  const descSize = isTablet ? 14 : 13;
+  const btnSize = isTablet ? 44 : 40;
+  const iconSize = isTablet ? 20 : 18;
 
   return (
-    <TouchableOpacity 
-      activeOpacity={0.9} 
-      onPress={onOpen}
-      // 1. Added a fixed height (h-56 is 224px) to keep cards uniform
-      className="mb-4 self-center rounded-[20px] overflow-hidden w-[340px] h-56 shadow-lg"
+    <TouchableOpacity
+      activeOpacity={0.92}
+      onPress={() => isClamped && setExpanded((p) => !p)}
+      style={{
+        width: cardWidth,
+        marginBottom: isTablet ? 20 : 16,
+        borderRadius: 20,
+        overflow: "hidden",
+        alignSelf: "center",
+      }}
     >
       <LinearGradient
-        colors={checked ? ['#94A3B8', '#64748B'] : ['#CEB7FF', '#FFBB7C']}
+        colors={checked ? ["#94A3B8", "#64748B"] : ["#CEB7FF", "#FFBB7C"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        className="p-6 h-full w-full justify-between" // Added justify-between to space out header and body
+        style={{
+          paddingHorizontal: px,
+          paddingTop: pt,
+          paddingBottom: pb,
+        }}
       >
-        
-        {/* HEADER SECTION */}
-        <View className="flex-row justify-between items-center">
-          <View className="flex-row items-center">
-            <View className="bg-white/20 px-3 py-1.5 rounded-2xl border border-white/20 mr-2">
-              <Text className="text-white text-[11px] font-bold">{date}</Text>
+        {/* Header */}
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 16,
+          }}
+        >
+          <View style={{ flexDirection: "row", gap: 8 }}>
+            <View
+              style={{
+                backgroundColor: "rgba(255,255,255,0.22)",
+                borderWidth: 1,
+                borderColor: "rgba(255,255,255,0.22)",
+                borderRadius: 99,
+                paddingHorizontal: 12,
+                paddingVertical: 5,
+              }}
+            >
+              <Text
+                style={{ fontSize: 11, fontWeight: "700", color: "#fff" }}
+              >
+                {date}
+              </Text>
             </View>
-            <View className="bg-white/20 px-3 py-1.5 rounded-2xl border border-white/20">
-              <Text className="text-white text-[11px] font-bold">{time}</Text>
+
+            <View
+              style={{
+                backgroundColor: "rgba(255,255,255,0.22)",
+                borderWidth: 1,
+                borderColor: "rgba(255,255,255,0.22)",
+                borderRadius: 99,
+                paddingHorizontal: 12,
+                paddingVertical: 5,
+              }}
+            >
+              <Text
+                style={{ fontSize: 11, fontWeight: "700", color: "#fff" }}
+              >
+                {time}
+              </Text>
             </View>
           </View>
 
-          <Pressable 
+          <Pressable
             onPress={onOpen}
-            className="w-12 h-12 bg-white rounded-full items-center justify-center"
+            style={{
+              width: btnSize,
+              height: btnSize,
+              borderRadius: 99,
+              backgroundColor: "#fff",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
-            <Feather name="arrow-up-right" size={22} color="#333" />
+            <Feather name="arrow-up-right" size={iconSize} color="#333" />
           </Pressable>
         </View>
 
-        {/* BODY SECTION */}
-        <View className="flex-row items-start mb-2">
-          {/* Circular Checkbox */}
-          <Pressable 
-            onPress={() => setChecked(!checked)}
-            className={`w-7 h-7 rounded-full border-2 items-center justify-center mr-4 mt-1 ${
-              checked ? 'bg-white border-white' : 'border-white/50'
-            }`}
+        {/* Divider */}
+        <View
+          style={{
+            height: 0.5,
+            backgroundColor: "rgba(255,255,255,0.22)",
+            marginBottom: 16,
+          }}
+        />
+
+        {/* Body */}
+        <View style={{ flexDirection: "row", alignItems: "flex-start", gap: 14 }}>
+          {/* Checkbox */}
+          <Pressable
+            onPress={() => setChecked((p) => !p)}
+            style={{
+              width: 28,
+              height: 28,
+              borderRadius: 14,
+              borderWidth: 2,
+              borderColor: checked ? "#fff" : "rgba(255,255,255,0.55)",
+              backgroundColor: checked ? "#fff" : "transparent",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: 2,
+            }}
           >
-            {checked && <Feather name="check" size={16} color="#CEB7FF" />}
+            {checked && (
+              <Feather name="check" size={14} color="#CEB7FF" />
+            )}
           </Pressable>
 
-          <View className="flex-1">
-            {/* 2. Added numberOfLines={1} for the title ellipses */}
-            <Text 
+          {/* Text content */}
+          <View style={{ flex: 1 }}>
+            <Text
               numberOfLines={1}
-              className={`text-white text-[24px] font-bold leading-7 mb-1 ${
-                checked ? 'line-through opacity-60' : ''
-              }`}
+              style={{
+                fontSize: titleSize,
+                fontWeight: "700",
+                color: "#fff",
+                marginBottom: 5,
+                textDecorationLine: checked ? "line-through" : "none",
+                opacity: checked ? 0.55 : 1,
+              }}
             >
               {title}
             </Text>
-            
-            {/* 3. Added numberOfLines={3} for the description ellipses */}
-            <Text 
-              numberOfLines={3}
-              className={`text-white/90 text-[14px] leading-5 ${
-                checked ? 'opacity-50' : ''
-              }`}
+
+            <Text
+              numberOfLines={expanded ? undefined : 3}
+              onTextLayout={(e) => {
+                if (!expanded) {
+                  setIsClamped(e.nativeEvent.lines.length > 3);
+                }
+              }}
+              style={{
+                fontSize: descSize,
+                lineHeight: descSize * 1.55,
+                color: "rgba(255,255,255,0.88)",
+                opacity: checked ? 0.45 : 1,
+              }}
             >
               {description}
             </Text>
-            
-            {/* 4. "Read More" Hint (Visual Only) */}
-            <Text className="text-white/40 text-[10px] mt-1 font-bold">
-              TAP TO READ MORE
-            </Text>
+
+            {isClamped && (
+              <Text
+                onPress={() => setExpanded((p) => !p)}
+                style={{
+                  marginTop: 8,
+                  fontSize: 10,
+                  fontWeight: "700",
+                  letterSpacing: 0.8,
+                  color: "rgba(255,255,255,0.38)",
+                  textTransform: "uppercase",
+                }}
+              >
+                {expanded ? "TAP TO COLLAPSE" : "TAP TO READ MORE"}
+              </Text>
+            )}
           </View>
         </View>
-
       </LinearGradient>
     </TouchableOpacity>
   );
