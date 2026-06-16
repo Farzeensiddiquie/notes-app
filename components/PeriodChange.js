@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Text, View, TouchableOpacity, Modal, Pressable } from "react-native";
 
-export default function PeriodChange() {
-  const [selected, setSelected] = useState("Monthly");
+export default function PeriodChange({ value, onChange }) {
+  // Support both controlled (value/onChange from parent) and uncontrolled usage
+  const [internalSelected, setInternalSelected] = useState("Monthly");
+  const selected = value ?? internalSelected;
+
   const [open, setOpen] = useState(false);
   const [triggerLayout, setTriggerLayout] = useState(null);
   const triggerRef = useState(null);
@@ -16,8 +19,16 @@ export default function PeriodChange() {
     });
   };
 
+  const handleSelect = (next) => {
+    if (onChange) {
+      onChange(next);
+    } else {
+      setInternalSelected(next);
+    }
+    setOpen(false);
+  };
+
   return (
-    // No width constraint — sizes to content
     <View style={{ alignSelf: "center" }}>
       {/* Trigger */}
       <TouchableOpacity
@@ -62,12 +73,7 @@ export default function PeriodChange() {
                 elevation: 8,
               }}
             >
-              <TouchableOpacity
-                onPress={() => {
-                  setSelected(other);
-                  setOpen(false);
-                }}
-              >
+              <TouchableOpacity onPress={() => handleSelect(other)}>
                 <Text style={{ color: "#000", fontSize: 15, fontWeight: "500" }}>
                   {other}
                 </Text>

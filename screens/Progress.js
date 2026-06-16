@@ -13,36 +13,32 @@ import BottomNav from "components/BottomNav";
 import SecondaryTopNav from "components/SecondaryTopNav";
 import PeriodChange from "components/PeriodChange";
 import SummaryDashboard from "components/SummaryDashboard";
+import StatsCard from "components/StatsCard";
 
 export default function Progress() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
 
   const [count] = React.useState(1000);
+  const [period, setPeriod] = React.useState("Monthly"); // <-- single source of truth
 
   return (
     <View className="flex-1 bg-white">
       <StatusBar barStyle="dark-content" />
 
-      {/* Background */}
       <Image
         source={require("../assets/gradient-bg.png")}
         className="absolute w-full h-full"
         resizeMode="cover"
       />
 
-      {/* Fixed Top Nav */}
       <View
-        style={{
-          top: insets.top + 50,
-          zIndex: 999,
-        }}
+        style={{ top: insets.top + 50, zIndex: 999 }}
         className="absolute w-full items-center px-6"
       >
         <SecondaryTopNav onBack={() => navigation.goBack()} />
       </View>
 
-      {/* Scrollable Content */}
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -59,18 +55,11 @@ export default function Progress() {
             alignItems: "flex-start",
           }}
         >
-          <Text
-            style={{
-              fontSize: 40,
-              fontWeight: "600",
-              flex: 1,
-            }}
-            numberOfLines={2}
-          >
+          <Text style={{ fontSize: 40, fontWeight: "600", flex: 1 }} numberOfLines={2}>
             Your Progress
           </Text>
 
-          <PeriodChange />
+          <PeriodChange value={period} onChange={setPeriod} />
         </View>
 
         {/* Average Count */}
@@ -87,16 +76,9 @@ export default function Progress() {
         </Text>
 
         <View className="flex-row items-end mt-1 px-6">
-          <Text
-            style={{
-              fontSize: 32,
-              fontWeight: "600",
-              color: "black",
-            }}
-          >
+          <Text style={{ fontSize: 32, fontWeight: "600", color: "black" }}>
             {count}
           </Text>
-
           <Text
             style={{
               fontSize: 16,
@@ -110,17 +92,14 @@ export default function Progress() {
           </Text>
         </View>
 
-        {/* Dashboard */}
+        <View>
+          <StatsCard period={period} />
+        </View>
+
         <SummaryDashboard />
       </ScrollView>
 
-      {/* Fixed Bottom Nav */}
-      <View
-        style={{
-          bottom: insets.bottom + 40,
-        }}
-        className="absolute w-full items-center z-[100]"
-      >
+      <View style={{ bottom: insets.bottom + 40 }} className="absolute w-full items-center z-[100]">
         <BottomNav />
       </View>
     </View>
